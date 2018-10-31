@@ -152,7 +152,9 @@
 
 (defun org-weather ()
   "Usable as sexp expression in the diary or an org file."
-  (org-weather-string date))
+  (condition-case nil
+      (org-weather-string date)
+    (error "Weather not available")))
 
 ;; (org-weather-refresh)
 ;; (eval-when-compile (require 'subr-x))
